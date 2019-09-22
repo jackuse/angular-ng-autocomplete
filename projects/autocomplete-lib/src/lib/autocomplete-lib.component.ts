@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ng-autocomplete-lib',
+  selector: 'lib-autocomplete-lib',
   template: `
     <p>
       autocomplete-lib works!

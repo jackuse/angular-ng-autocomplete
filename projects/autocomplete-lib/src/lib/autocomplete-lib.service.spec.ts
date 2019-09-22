@@ -1,15 +1,12 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { AutocompleteLibService } from './autocomplete-lib.service';
 
 describe('AutocompleteLibService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [AutocompleteLibService]
-    });
-  });
+  beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', inject([AutocompleteLibService], (service: AutocompleteLibService) => {
+  it('should be created', () => {
+    const service: AutocompleteLibService = TestBed.get(AutocompleteLibService);
     expect(service).toBeTruthy();
-  }));
+  });
 });

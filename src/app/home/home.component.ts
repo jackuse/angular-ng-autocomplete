@@ -5,12 +5,11 @@ import {DataService} from '../services/data.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
-  @ViewChild('ngAutoCompleteStatic') ngAutocompleteStatic;
-  @ViewChild('ngAutoCompleteApi') ngAutocompleteApi;
+  @ViewChild('ngAutoCompleteStatic', { static: false }) ngAutocompleteStatic;
+  @ViewChild('ngAutoCompleteApi', { static: false }) ngAutocompleteApi;
 
   items;
   public placeholder: string = 'Enter the Country Name';
@@ -20,20 +19,49 @@ export class HomeComponent implements OnInit {
   initialValue = {
     id: 9,
     name: 'Georgia',
-    population: 200
+    population: 200,
   };
 
   /**
    * Static Data
    */
 
-  public countries = ['Albania', 'Andorra', 'Armenia', 'Austria', 'Azerbaijan', 'Belarus',
-    'Belgium'];
+  public countries = [
+    'Albania',
+    'Andorra',
+    'Armenia',
+    'Austria',
+    'Azerbaijan',
+    'Belarus',
+    'Belgium',
+  ];
 
-  public test = ['Lithuania', 'Luxembourg', 'Macedonia', 'Malta',
-    'Moldova', 'Monaco', 'Montenegro', 'Netherlands', 'Norway', 'Poland',
-    'Portugal', 'Romania', 'Russia', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia',
-    'Spain', 'Sweden', 'Switzerland', 'Turkey', 'Ukraine', 'United Kingdom', 'Vatican City'];
+  public test = [
+    'Lithuania',
+    'Luxembourg',
+    'Macedonia',
+    'Malta',
+    'Moldova',
+    'Monaco',
+    'Montenegro',
+    'Netherlands',
+    'Norway',
+    'Poland',
+    'Portugal',
+    'Romania',
+    'Russia',
+    'San Marino',
+    'Serbia',
+    'Slovakia',
+    'Slovenia',
+    'Spain',
+    'Sweden',
+    'Switzerland',
+    'Turkey',
+    'Ukraine',
+    'United Kingdom',
+    'Vatican City',
+  ];
 
   /*
     public countries = [
@@ -100,11 +128,9 @@ export class HomeComponent implements OnInit {
     ];
   */
 
-  constructor(private _dataService: DataService) {
-  }
+  constructor(private _dataService: DataService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   /**
    * API Data
@@ -112,15 +138,18 @@ export class HomeComponent implements OnInit {
   onChangeSearch(val: string) {
     //console.log('value', val);
     this.isLoading = true;
-    this._dataService.getRepos(val).subscribe(res => {
-      console.log('res', res);
-      //this.items = this.items ? this.items.concat(res['items']) : res['items'];
-      this.items = res['items'];
-      this.isLoading = false;
-    }, (err) => {
-      console.log('err', err);
-      this.isLoading = false;
-    });
+    this._dataService.getRepos(val).subscribe(
+      res => {
+        console.log('res', res);
+        //this.items = this.items ? this.items.concat(res['items']) : res['items'];
+        this.items = res['items'];
+        this.isLoading = false;
+      },
+      err => {
+        console.log('err', err);
+        this.isLoading = false;
+      },
+    );
   }
 
   selectEvent(item) {
@@ -187,7 +216,6 @@ export class HomeComponent implements OnInit {
    * End of Static
    */
 
-
   /**
    * API
    */
@@ -197,7 +225,6 @@ export class HomeComponent implements OnInit {
     // Fetch API data on Load
     this.onChangeSearch(null);
   }
-
 
   openedEventApi() {
     console.log('opened');
@@ -236,5 +263,4 @@ export class HomeComponent implements OnInit {
   /**
    * End of API
    */
-
 }

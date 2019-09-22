@@ -1,30 +1,25 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import {AppComponent} from './app.component';
-import {AutocompleteLibModule} from 'autocomplete-lib';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {FormsComponent} from './forms/forms.component';
-import {AppRoutingModule} from './app-routing.module';
-import {HomeComponent} from './home/home.component';
+import { AppComponent } from './app.component';
+import { FormsComponent } from './forms/forms.component';
+import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AutocompleteLibModule } from 'projects/autocomplete-lib/src/public-api';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FormsComponent,
-    HomeComponent
-  ],
+  declarations: [AppComponent, FormsComponent, HomeComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     AutocompleteLibModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
